@@ -1,0 +1,22 @@
+<body>
+    <link rel="stylesheet" href="../style.css">
+
+    <div class="myform">
+        <div class="row">
+            <label for="">Choose Color : </label>
+            <input type="color" name="" id="clr">
+        </div>
+        <div class="row">
+            <button onclick="setcolor()" id="btn">Set Color</button>
+        </div>
+    </div>
+
+    <script>
+        function setcolor() {
+            let divclr = document.getElementById("clr").value;
+            document.body.style.backgroundColor = divclr;
+        }
+    </script>
+</body>
+
+</html>
