@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .dark-theme {
+            background-color: black;
+            color: white;
+        }
+
+        span {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Change Theme Using click on Icon</h2>
+    <div class="myform" style="padding: 30px;">
+        <span class="fa-sharp fa-solid fa-moon" id="moon"></span>
+        <h5>Click on Icon</h5>
+    </div>
+
+    <script>
+        let moon = document.querySelector(".fa-moon");
+        moon.addEventListener("click", function () {
+            document.body.classList.toggle("dark-theme");
+            if (document.body.classList.contains("dark-theme") == true) {
+                moon.classList.remove("fa-moon");
+                moon.innerHTML = "<span class = 'fa-sharp fa-solid fa-sun'></span>"
+            }
+            else {
+                moon.classList.remove("fa-sun");
+                moon.innerHTML = "<span class = 'fa-sharp fa-solid fa-moon'></span>"
+            }
+        })
+    </script>
+</body>
+
+</html>

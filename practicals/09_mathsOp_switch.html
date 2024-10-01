@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .mathsOp {
+            height: auto;
+            width: fit-content;
+            padding: 30px;
+            border: 2px solid black;
+            margin: 150px auto;
+        }
+
+        .field {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 5px;
+        }
+
+        .field4 {
+            justify-items: center;
+        }
+
+        .ans span {
+            color: red;
+        }
+
+        .msg {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mathsOp">
+        <div class="field">
+            <label for="">Enter 1st number </label>
+            <input type="text" name="" id="num1" onblur="return checkBlank(this, 'msg1')"
+                onkeyup="return checkRegExp(this, 'msg1')">
+            <span class="msg" id="msg1"></span>
+        </div>
+        <div class="field">
+            <label for="">Enter 2nd number </label>
+            <input type="text" name="" id="num2" onblur="return checkBlank(this, 'msg2')"
+                onkeyup="return checkRegExp(this, 'msg2')">
+            <span class="msg" id="msg2"></span>
+        </div>
+        <div class="field">
+            <label for="">Select Operation</label>
+            <select name="" id="list" onblur="return checkblanksel(this,'msg3')">
+                <option value="-1">---select---</option>
+                <option value="1">Addition</option>
+                <option value="2">Subtraction</option>
+                <option value="3">Multiplication</option>
+                <option value="4">Division</option>
+                <option value="5">Modules</option>
+            </select>
+            <span class="msg" id="msg3"></span>
+        </div>
+        <div class="field field4">
+            <div></div>
+            <button onclick="return checkValidate()">Answer</button>
+        </div>
+
+        <div class="ans">
+            <div class="">Answer is : <span id="ans"></span></div>
+        </div>
+    </div>
+
+    <script>
+        function checkValidate() {
+            let n1 = document.getElementById("num1");
+            let n2 = document.getElementById("num2");
+            let list = document.getElementById("list");
+            if (n1.value == null || n1.value == "") {
+                document.getElementById("msg1").innerHTML = "Enter value";
+                return false;
+            } else if (n2.value == null || n2.value == "") {
+                document.getElementById("msg2").innerHTML = "Enter value";
+                return false;
+            } else if (list.value == "-1") {
+                document.getElementById("msg3").innerHTML = "Select value";
+                return false
+            } else {
+                switch (list.value) {
+                    case "1":
+                        var res = Number(n1.value) + Number(n2.value)
+                        document.getElementById("ans").innerHTML = res;
+                        break;
+                    case "2":
+                        var res = Number(n1.value) - Number(n2.value)
+                        document.getElementById("ans").innerHTML = res;
+                        break;
+                    case "3":
+                        var res = Number(n1.value) * Number(n2.value)
+                        document.getElementById("ans").innerHTML = res;
+                        break;
+                    case "4":
+                        var res = Number(n1.value) / Number(n2.value)
+                        document.getElementById("ans").innerHTML = res;
+                        break;
+                    case "5":
+                        var res = Number(n1.value) % Number(n2.value)
+                        document.getElementById("ans").innerHTML = res;
+                        break;
+                    default:
+                        document.getElementById("ans").innerHTML = "wrong selection try again";
+                        break;
+                }
+            }
+        }
+        function checkBlank(blank, msg) {
+            if (blank.value == "" || blank.value == null) {
+                document.getElementById(msg).innerHTML = "Enter value";
+                return false
+            }
+        }
+        function checkRegExp(ex, msg) {
+            let ptn = /^[0-9]*$/
+            if (!(ptn.test(ex.value))) {
+                document.getElementById(msg).innerHTML = "enter only number";
+                return false
+            } else {
+                document.getElementById(msg).innerHTML = "";
+                return false
+            }
+        }
+        function checkblanksel(sel, msg) {
+            if (sel.value == "-1") {
+                document.getElementById(msg).innerHTML = "Select value";
+                return false
+            } else {
+                document.getElementById(msg).innerHTML = "";
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>

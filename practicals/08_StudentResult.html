@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .marksheet {
+            border: 2px solid black;
+            height: auto;
+            width: fit-content;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            padding: 5px 0px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .msg {
+            color: red;
+        }
+
+        .errorMsg {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="marksheet">
+        <h2>Marksheet</h2>
+        <form action="" class="" name="form1">
+            <!-- 1st row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">1. C Language</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="clang" onblur="checkBlank(this, 'msg1')"
+                        onkeyup="checkNumberVal(this, 'msg1')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg1" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- 2nd row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">2. C++ Language</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="cpplang" onblur="checkBlank(this, 'msg2')"
+                        onkeyup="checkNumberVal(this, 'msg2')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg2" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- 3rd row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">3. Database</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="db" onblur="checkBlank(this, 'msg3')"
+                        onkeyup="checkNumberVal(this, 'msg3')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg3" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- 4th row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">4. HTML</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="htmllang" onblur="checkBlank(this, 'msg4')"
+                        onkeyup="checkNumberVal(this, 'msg4')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg4" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- 5th row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">5. CSS</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="csslang" onblur="checkBlank(this, 'msg5')"
+                        onkeyup="checkNumberVal(this, 'msg5')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg5" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- 6th row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">6. php</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="phplang" onblur="checkBlank(this,'msg6')"
+                        onkeyup="checkNumberVal(this, 'msg6')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg6" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- 7th row -->
+            <div class="row">
+                <div class="col">
+                    <label for="">7. Core java</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="javalang" onblur="checkBlank(this,'msg7')"
+                        onkeyup="checkNumberVal(this, 'msg7')" placeholder="out of 50">
+                </div>
+                <div class="col">
+                    <span id="msg7" class="msg"></span>
+                </div>
+            </div>
+
+            <!-- result -->
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <button onclick="return result()">Result</button>
+                </div>
+            </div>
+
+            <!-- total value and % -->
+            <div class="row">
+                <div class="col">
+                    <p>Total is : <span id="total">000</span> / 350 </p>
+                </div>
+                <div class="col">
+                    <p>Percentage is : <span id="per"></span>% </p>
+                </div>
+                <div class="col">
+                    <p>You are : <span id="stat"></span> </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function result() {
+            let clang = document.getElementById("clang").value;
+            let cpplang = document.getElementById("cpplang").value;
+            let db = document.getElementById("db").value;
+            let htmllang = document.getElementById("htmllang").value;
+            let csslang = document.getElementById("csslang").value;
+            let phplang = document.getElementById("phplang").value;
+            let javalang = document.getElementById("javalang").value;
+
+            if (clang == "" || cpplang == "" || db == "" || htmllang == "" || csslang == "" || phplang == "" || javalang == "") {
+                alert("Enter value")
+            } else {
+                let total = Number(clang) + Number(cpplang) + Number(db) + Number(htmllang) + Number(csslang) + Number(phplang) + Number(javalang);
+                if (total > 350) {
+                    document.getElementById("total").ariaDisabled;
+                } else {
+                    let per = Math.round(Number(total * 100 / 350))
+                    document.getElementById("total").innerHTML = total;
+                    document.getElementById("per").innerHTML = per;
+                    if (per < 17 || clang < 17 || cpplang < 17 || db < 17 || htmllang < 17 || csslang < 17 || phplang < 17 || javalang < 17) {
+                        document.getElementById("stat").innerHTML = "Fail";
+                        document.getElementById("stat").style.color = "red";
+                        return false;
+                    } else {
+                        document.getElementById("stat").innerHTML = "Pass";
+                        return false;
+                    }
+                }
+                return false;
+            }
+        }
+        function checkBlank(e, spanid) {
+            if (e.value == "" || e.value == null) {
+                document.getElementById(spanid).innerText = "Enter value";
+                return false
+            }
+        }
+        function checkNumberVal(e, spanid) {
+            let num = /^[0-9]*$/
+            if (!num.test(e.value)) {
+                document.getElementById(spanid).innerText = "invalid values"
+                return false
+            }
+            if (e.value > 50) {
+                document.getElementById(spanid).innerText = "invalid marks"
+                return false
+            } else {
+                document.getElementById(spanid).innerText = ""
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>

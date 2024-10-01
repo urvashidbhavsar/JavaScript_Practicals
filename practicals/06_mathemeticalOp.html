@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>mathematics operation</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .operations {
+            padding: 20px;
+            margin: auto;
+            border: 1px solid black;
+            width: 500px;
+        }
+
+        .field {
+            display: flex;
+            padding: 10px 0;
+            gap: 10px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        #msg1 {
+            font-size: 20px;
+
+        }
+
+        #msg2,
+        #msg3 {
+            font-size: 13px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="operations">
+        <h2>Maths Operations Using Saparate Buttons</h2>
+        <form action="#" class="">
+            <div class="field">
+                <div class="col">
+                    <label for="">Enter 1st number : </label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="num1" onkeyup="return checkfield('num1','msg2')">
+                    <span id="msg2"></span>
+                </div>
+            </div>
+            <div class="field">
+                <div class="col">
+                    <label for="">Enter 2nd number : </label>
+                </div>
+                <div class="col">
+                    <input type="text" name="" id="num2" onkeyup="return checkfield('num2','msg3')">
+                    <span id="msg3"></span>
+                </div>
+            </div>
+            <div class="field">
+                <button id="add" onclick="return addition('num1','num2','msg1')">+</button>
+                <button id="subs" onclick="return subtract('num1','num2','msg1')">-</button>
+                <button id="multi" onclick="return multiplication('num1','num2','msg1')">*</button>
+                <button id="divide" onclick="return division('num1','num2','msg1')">/</button>
+                <button id=" modules" onclick="return modules('num1','num2','msg1')">%</button>
+            </div>
+            <div class="field">
+                <p>Answer is : <span id="msg1"></span></p>
+            </div>
+        </form>
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>
