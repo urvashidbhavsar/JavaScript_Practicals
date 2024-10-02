@@ -53,16 +53,53 @@ h2 {
   color: white;
 }
 
+@media (min-width: 992px) {
+  .btn {
+    display: none;
+  }
+}
+.btn i {
+  font-size: 20px;
+}
+
 .mainSection {
   display: flex;
 }
+@media (max-width: 576px) {
+  .mainSection {
+    flex-direction: column;
+  }
+}
+@media (min-width: 576px) {
+  .mainSection {
+    flex-direction: column;
+  }
+}
 .mainSection .index {
+  position: relative;
   width: 25%;
   padding: 20px 40px;
   overflow: auto;
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: gray #cbcbcb;
+}
+@media (max-width: 576px) {
+  .mainSection .index {
+    display: none;
+    width: 100%;
+  }
+}
+@media (min-width: 576px) {
+  .mainSection .index {
+    display: none;
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .mainSection .index {
+    display: block;
+  }
 }
 .mainSection .index .linktitle {
   background-color: #c40d74;
@@ -86,10 +123,47 @@ h2 {
 .mainSection .index ul li a {
   color: blue;
 }
+.mainSection .index .closebtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media (max-width: 576px) {
+  .mainSection .index .closebtn {
+    display: block;
+  }
+}
+@media (min-width: 576px) {
+  .mainSection .index .closebtn {
+    display: block;
+  }
+}
+@media (min-width: 992px) {
+  .mainSection .index .closebtn {
+    display: none;
+  }
+}
+.mainSection .index .closebtn .cbtn {
+  padding: 10px 15px;
+}
 .mainSection .main {
-  width: 75%;
   padding: 20px;
   background-color: rgb(222, 220, 220);
+}
+@media (max-width: 576px) {
+  .mainSection .main {
+    width: 100%;
+  }
+}
+@media (min-width: 576px) {
+  .mainSection .main {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .mainSection .main {
+    width: 75%;
+  }
 }
 .mainSection .main iframe {
   width: 100%;

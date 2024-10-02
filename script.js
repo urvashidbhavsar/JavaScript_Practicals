@@ -68,3 +68,12 @@ const odd_even = () => {
     }
     return false;
 }
+// ==================================================================
+const tog = () => {
+    let index = document.getElementById("index");
+    index.style.display = "block"
+}
+const closemenu = () => {
+    let index = document.getElementById("index");
+    index.style.display = "none"
+}

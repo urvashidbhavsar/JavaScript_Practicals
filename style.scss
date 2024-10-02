@@ -53,16 +53,49 @@ h2 {
     }
 }
 
+.btn {
+    @media (min-width:992px) {
+        display: none;
+    }
+
+    i {
+        font-size: 20px;
+    }
+}
+
 .mainSection {
     display: flex;
 
+    @media (max-width:576px) {
+        flex-direction: column;
+    }
+
+    @media (min-width:576px) {
+        flex-direction: column;
+    }
+
     .index {
+        position: relative;
         width: 25%;
         padding: 20px 40px;
         overflow: auto;
         scroll-behavior: smooth;
         scrollbar-width: thin;
         scrollbar-color: gray #cbcbcb;
+
+        @media (max-width:576px) {
+            display: none;
+            width: 100%;
+        }
+
+        @media (min-width:576px) {
+            display: none;
+            width: 100%;
+        }
+
+        @media (min-width:992px) {
+            display: block;
+        }
 
         .linktitle {
             background-color: #c40d74;
@@ -90,12 +123,45 @@ h2 {
                 }
             }
         }
+
+        .closebtn {
+            @media (max-width:576px) {
+                display: block;
+            }
+
+            @media (min-width:576px) {
+                display: block;
+            }
+
+            @media (min-width:992px) {
+                display: none;
+            }
+
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            .cbtn {
+                padding: 10px 15px;
+            }
+        }
     }
 
     .main {
-        width: 75%;
         padding: 20px;
         background-color: rgb(222, 220, 220);
+
+        @media (max-width:576px) {
+            width: 100%;
+        }
+
+        @media (min-width:576px) {
+            width: 100%;
+        }
+
+        @media (min-width:992px) {
+            width: 75%;
+        }
 
         iframe {
             width: 100%;
