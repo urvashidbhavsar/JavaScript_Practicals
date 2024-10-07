@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .row {
+            padding: 5px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false">
+    <form action="#">
+        <h2>Enter any text in input and click on button</h2>
+        <div class="row">
+            <input type="text" name="" id="input" placeholder="Type any line">
+        </div>
+        <div class="row">
+            <button onclick="return speck()">speak line</button>
+        </div>
+    </form>
+    <script>
+        function speck() {
+            var text = document.getElementById("input").value;
+            var sp = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(sp);
+            return false
+        }
+    </script>
+</body>
+
+</html>

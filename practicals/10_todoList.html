@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .setDiv {
+            width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 3px rgb(203, 201, 201);
+        }
+
+        .input-field {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        input[type='text'] {
+            height: 40px;
+            width: 300px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 12px 30px;
+        }
+
+        h1 {
+            padding-bottom: 30px;
+        }
+
+        .list {
+            padding-top: 20px;
+        }
+
+        .list-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .close {
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .list-text:nth-child(odd) {
+            background-color: #7e7e31;
+            color: white;
+        }
+
+        .list-text:nth-child(even) {
+            background-color: cadetblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false">
+    <div class="setDiv">
+        <div class="todolist">
+            <h1>Todo List</h1>
+            <div class="input-field">
+                <div>
+                    <input type="text" name="" id="userinp">
+                </div>
+                <div>
+                    <button id="btn">Add List</button>
+                </div>
+            </div>
+            <div class="list">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            let input = document.getElementById("userinp").value;
+            let textfield = document.createElement("div");
+            let textinput = document.createTextNode(input);
+            let cross = document.createTextNode("\u00D7")
+
+            let text_div = document.createElement("div");
+            let close_div = document.createElement("div")
+            textfield.classList.add("list-text");
+            text_div.classList.add("text");
+            close_div.classList.add("close");
+
+            textfield.append(text_div);
+            textfield.append(close_div)
+            text_div.append(textinput);
+            close_div.append(cross);
+
+            document.querySelector(".list").append(textfield);
+            document.getElementById("userinp").value = "";
+
+            let closebtn = document.getElementsByClassName("close")
+            for (i = 0; i < closebtn.length; i++) {
+                closebtn[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.remove()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

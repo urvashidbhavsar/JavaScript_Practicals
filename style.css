@@ -75,9 +75,13 @@ h2 {
     flex-direction: column;
   }
 }
+@media (min-width: 992px) {
+  .mainSection {
+    flex-direction: row;
+  }
+}
 .mainSection .index {
   position: relative;
-  width: 25%;
   padding: 20px 40px;
   overflow: auto;
   scroll-behavior: smooth;
@@ -99,6 +103,7 @@ h2 {
 @media (min-width: 992px) {
   .mainSection .index {
     display: block;
+    width: 25%;
   }
 }
 .mainSection .index .linktitle {

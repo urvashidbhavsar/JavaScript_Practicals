@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .status {
+            height: auto;
+            width: 550px;
+            border: 2px solid black;
+            padding: 30px;
+            margin: 100px auto;
+        }
+
+        p {
+            font-size: 20px;
+            border-bottom: 2px solid #08367c;
+            padding-bottom: 10px;
+        }
+
+        .row {
+            display: flex;
+            padding: 5px;
+            align-items: center;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .col-1 {
+            flex: 1.5;
+        }
+
+        input[type="date"] {
+            height: 25px;
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .msg {
+            font-size: 20px;
+            padding: 5px 0;
+        }
+
+        .msg span {
+            color: blue;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 7px;
+            background-color: #08367c;
+            color: white;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            box-shadow: 0 0 5px gray;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+    <div class="status">
+        <p>Display difference of Day, Month and Year of given 2 dates </p>
+        <form action="#" method="post">
+            <!-- 1st Number -->
+            <div class="row">
+                <div class="col">
+                    <label for="">Enter Start Date : </label>
+                </div>
+                <div class="col-1">
+                    <input type="date" name="date1" id="d1">
+                </div>
+            </div>
+
+            <!-- 2nd Number -->
+            <div class="row">
+                <div class="col">
+                    <label for="">Enter End Date : </label>
+                </div>
+                <div class="col-1">
+                    <input type="date" name="date2" id="d2">
+                </div>
+            </div>
+
+            <!-- button -->
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-1">
+                    <button id="btn1" type="submit" onclick="return showdate()">Display</button>
+                </div>
+            </div>
+
+            <!-- msg -->
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-1">
+                    <div class="msg">Day is : <span id="m1"></span></div>
+                    <div class="msg">Month is : <span id="m2"></span></div>
+                    <div class="msg">Year is : <span id="m3"></span></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function showdate() {
+            debugger
+            var d1 = document.getElementById("d1").value;
+            var d2 = document.getElementById("d2").value;
+
+            var date1 = new Date(d1);
+            var date2 = new Date(d2);
+
+            var days = date2.getTime() - date1.getTime();
+
+            var diffDate = days / (1000 * 60 * 60 * 24);
+
+
+            var year = days / (1000 * 60 * 60 * 24)
+            var diffYear = Math.round(year / 365.25); // avarage of 365+366/2
+            var diffMonth = Math.floor((year / 30.25)); // avarage of 30+31/2
+
+            document.getElementById("m1").innerHTML = diffDate;
+            document.getElementById("m2").innerHTML = diffMonth;
+            document.getElementById("m3").innerHTML = diffYear;
+
+            return false
+        }
+    </script>
+</body>
+
+</html>

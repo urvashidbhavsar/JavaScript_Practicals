@@ -77,3 +77,7 @@ const closemenu = () => {
     let index = document.getElementById("index");
     index.style.display = "none"
 }
+// =============================================================== 
+window.frames["myframe"].contentDocument.oncontextmenu = function () {
+    return false;
+};

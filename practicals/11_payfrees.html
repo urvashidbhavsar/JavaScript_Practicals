@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .payment-form {
+            background: url(plain.jpg) no-repeat center;
+            background-size: cover;
+            padding: 100px 0;
+        }
+
+        .pay-form {
+            padding: 20px;
+            width: 800px;
+            background-color: white;
+            margin: auto;
+        }
+
+        .title {
+            border-left: 5px solid blue;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-field {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .label {
+            text-transform: capitalize;
+        }
+
+        input[type="text"] {
+            height: 35px;
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid rgb(201, 200, 200);
+            letter-spacing: 1px;
+        }
+
+        input[type="radio"] {
+            height: 15px;
+            width: 15px;
+        }
+
+        input[type="text"]:focus-visible {
+            outline: none;
+        }
+
+        .sel-boxes {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .fields:nth-child(1) {
+            grid-column: 1/span 3;
+        }
+
+        .pay {
+            display: none;
+        }
+
+        .pay-show {
+            display: block;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: black;
+            border: none;
+            color: white;
+            box-shadow: 0 0;
+        }
+
+        .msg {
+            color: red;
+            font-size: 13px;
+        }
+
+        .error {
+            border-bottom: 2px solid red !important;
+        }
+
+        @media print {
+            .error {
+                border-bottom: unset;
+            }
+
+            .msg {
+                display: none;
+            }
+
+            .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false">
+    <div class="payment-form">
+        <div class="pay-form">
+            <h2 class="title">Payment Method Example</h2>
+            <div class="form-field">
+                <div class="fields">
+                    <div class="label">Enter Name : </div>
+                    <div>
+                        <input type="text" name="" id="full_name" onkeyup="return nameValidate('full_name','msg1')">
+                    </div>
+                    <div>
+                        <span class="msg" id="msg1"></span>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="label">Total Fees : </div>
+                    <div>
+                        <input type="text" name="" id="tfees" onkeyup="return amount('tfees','msg2')">
+                    </div>
+                    <div>
+                        <span class="msg" id="msg2"></span>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="label">paid Fees : </div>
+                    <div class="sel-boxes">
+                        <div>
+                            <input type="radio" name="gen" id="cheque" onclick="showPayMethod('cheque', 'cheq')">
+                            <label for="">cheque</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="gen" id="online" onclick="showPayMethod('online', 'on_line')">
+                            <label for="">online</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="gen" id="cash" onclick="showPayMethod('cash', 'csh')">
+                            <label for="">cash</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div id="cheq" class="pay">
+                        <div class="label">Cheque No : </div>
+                        <input type="text" name="" id="chkno" onkeyup="amount('chkno','msg3')">
+                        <div>
+                            <span class="msg" id="msg3"></span>
+                        </div>
+
+                        <div class="label">Amount : </div>
+                        <input type="text" name="" id="amt1"
+                            onkeyup="amount('amt1','msg4'),calculate('tfees',this,'remain')" class="amt">
+                        <div>
+                            <span class="msg" id="msg4"></span>
+                        </div>
+
+                    </div>
+                    <div id="on_line" class="pay">
+                        <div class="label">UPI ID : </div>
+                        <input type="text" name="" id="upino">
+                        <div>
+                            <span class="msg" id="msg5"></span>
+                        </div>
+
+                        <div class="label">Amount : </div>
+                        <input type="text" name="" id="amt2"
+                            onkeyup="amount('amt2','msg6'),calculate('tfees',this,'remain')" class="amt">
+                        <div>
+                            <span class="msg" id="msg6"></span>
+                        </div>
+                    </div>
+                    <div id="csh" class="pay">
+                        <div class="label">Cash Amount: </div>
+                        <input type="text" name="" id="cashnum"
+                            onkeyup="amount('cashnum','msg7'), calculate('tfees',this,'remain')" class="amt">
+                        <div>
+                            <span class="msg" id="msg7"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="label">Remaining Fees : </div>
+                    <div>
+                        <input type="text" name="" id="remain" readonly>
+                    </div>
+                </div>
+                <div class="field"></div>
+                <div class="field"></div>
+                <div class="field">
+                    <button class="btn" onclick="printpage()">Convert PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="payfees.js"></script>
+</body>
+
+</html>

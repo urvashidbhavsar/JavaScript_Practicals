@@ -74,9 +74,13 @@ h2 {
         flex-direction: column;
     }
 
+    @media (min-width:992px) {
+        flex-direction: row;
+    }
+
+
     .index {
         position: relative;
-        width: 25%;
         padding: 20px 40px;
         overflow: auto;
         scroll-behavior: smooth;
@@ -95,6 +99,7 @@ h2 {
 
         @media (min-width:992px) {
             display: block;
+            width: 25%;
         }
 
         .linktitle {
