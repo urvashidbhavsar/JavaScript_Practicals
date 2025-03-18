@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      background-color: seagreen;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .block {
+      text-align: center;
+    }
+
+    .btn:active {
+      scale: 0.9;
+    }
+
+    .modalDesign {
+      width: 500px;
+      margin: 10px auto;
+      border: 1px solid black;
+      padding: 20px;
+      transition: 1s ease all;
+      background-color: white;
+      transform: translateY(-600px);
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .close {
+      background-color: red;
+      color: white;
+      border: none;
+      height: 30px;
+      width: 30px;
+      border-radius: 5px;
+    }
+
+    .modalBody {
+      margin-top: 20px;
+    }
+
+    .show {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="block">
+    <button onclick="addmodal()" class="btn">Click On Me</button>
+  </div>
+
+  <div class="modalDesign">
+    <div class="title">
+      <h1>Modal Title</h1>
+      <div><button class="close" onclick="removemodal()">&Cross;</button></div>
+    </div>
+    <div class="modalBody">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus nemo sunt assumenda quam quia quaerat, quo
+        reprehenderit odio eaque quod dignissimos voluptate voluptatum mollitia, deleniti libero quis labore, officiis
+        necessitatibus?
+      </p>
+    </div>
+  </div>
+
+
+  <script>
+    function addmodal() {
+      let modal = document.querySelector(".modalDesign");
+      modal.classList.add("show")
+    }
+    function removemodal() {
+      let modal = document.querySelector(".modalDesign");
+      modal.classList.remove("show")
+    }
+  </script>
+</body>
+
+</html>
